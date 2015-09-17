@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var angular2_1 = require('angular2/angular2');
-var forms_1 = require('angular2/forms');
+var core_1 = require('angular2/core');
 // An example of typical model
 var Address = (function () {
     function Address() {
@@ -29,9 +29,9 @@ var LiloForm = (function () {
         this.address = new Address();
         // defining a form model
         this.form = fb.group({
-            street: [this.address.street, forms_1.required],
-            city: [this.address.city, forms_1.required],
-            state: [this.address.city, forms_1.required],
+            street: [this.address.street, core_1.required],
+            city: [this.address.city, core_1.required],
+            state: [this.address.city, core_1.required],
             zip: [this.address.zip, zipCodeValidator],
             residential: [this.address.residential]
         });
@@ -43,10 +43,11 @@ var LiloForm = (function () {
         }),
         angular2_1.View({
             template: "\n    // explicitly defining the template of the form\n    <form [form]=\uFFFDform\uFFFD>\n      Street <input control=\"street\">\n      <div *if=\"form.hasError('street', 'required')\">Required</div>\n\n      City <input control=\"city\">\n      <div *if=\"form.hasError('city', 'required')\">Required</div>\n\n      State <input control=\"state\" size=\"2\">\n      <div *if=\"form.hasError('state', 'required')\">Required</div>\n\n      Zip <input control=\"zip\" size=\"5\">\n      <div *if=\"form.hasError('zip', 'invalidZipCode')\">\n        Zip code is invalid\n      </div>\n\n      Residential <input control=\"residential\" type=\"checkbox\">\n    </form>\n  ",
-            directives: [forms_1.forms, forms_1.required]
+            directives: [core_1.FormBuilder, core_1.FORM_DIRECTIVES, core_1.required]
         }), 
-        __metadata('design:paramtypes', [Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.FormBuilder !== 'undefined' && core_1.FormBuilder) === 'function' && _a) || Object])
     ], LiloForm);
     return LiloForm;
+    var _a;
 })();
 angular2_1.bootstrap(LiloForm);

@@ -1,0 +1,1 @@
+cmd /c http-server
